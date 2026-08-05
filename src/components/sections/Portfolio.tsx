@@ -45,7 +45,7 @@ export function Portfolio() {
         </div>
 
         <div className="mt-10 columns-2 gap-5 lg:columns-3 [&>*]:mb-5">
-          {photos.map((photo) => (
+          {photos.map((photo, index) => (
             <figure
               key={photo.src}
               className="group relative overflow-hidden rounded-brand break-inside-avoid shadow-soft"
@@ -54,6 +54,7 @@ export function Portfolio() {
                 src={photo.src}
                 alt={photo.alt}
                 loading="lazy"
+                style={{ aspectRatio: ["3 / 4", "1 / 1", "4 / 5"][index % 3] }}
                 className="w-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/85 to-transparent p-5 text-[0.65rem] tracking-[0.22em] text-cream uppercase opacity-0 transition-opacity duration-500 group-hover:opacity-100">
