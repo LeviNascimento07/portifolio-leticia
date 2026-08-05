@@ -79,7 +79,7 @@ export function Portfolio() {
                   type="button"
                   onClick={() => setActive(index)}
                   aria-label={`Ver ${video.title}`}
-                  className="absolute left-1/2 top-0 h-full w-[78%] max-w-xl -translate-x-1/2 overflow-hidden rounded-brand-lg shadow-lift transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:w-[56%]"
+                  className="absolute left-1/2 top-0 h-full w-[78%] max-w-xl overflow-hidden rounded-brand-lg shadow-lift transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:w-[56%]"
                   style={{
                     transform: `translateX(calc(-50% + ${offset * 42}%)) translateZ(${-abs * 170}px) rotateY(${offset * -32}deg) scale(${1 - abs * 0.06})`,
                     zIndex: VIDEOS.length - abs,

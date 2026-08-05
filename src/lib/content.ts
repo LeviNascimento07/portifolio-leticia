@@ -125,7 +125,7 @@ export const PHOTOS: { src: string; category: PhotoCategory; alt: string }[] = [
     alt: "Mesa decorada para recepção de evento",
   },
   {
-    src: "https://images.unsplash.com/photo-1470229722913-7ea0e9dbdc9c?auto=format&fit=crop&w=800&q=80",
+    src: "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&w=800&q=80",
     category: "Eventos",
     alt: "Show ao vivo com iluminação cênica",
   },
