@@ -52,7 +52,7 @@ export function Packages() {
                 </a>
               </article>
             ) : (
-              <article key={pkg.name} className="perspective-deep group h-[34rem]">
+              <article key={pkg.name} className="perspective-deep group h-[30rem]">
                 <div className="preserve-3d relative size-full transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:[transform:rotateY(180deg)]">
                   {/* frente */}
                   <div className="backface-hidden absolute inset-0 flex flex-col rounded-brand-lg border border-border bg-card p-9 shadow-soft">

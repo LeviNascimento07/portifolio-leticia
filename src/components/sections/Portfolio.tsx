@@ -14,7 +14,7 @@ export function Portfolio() {
     setActive((prev) => (prev + dir + VIDEOS.length) % VIDEOS.length);
 
   return (
-    <section id="portfolio" className="bg-background py-24 md:py-36" aria-labelledby="port-title">
+    <section id="portfolio" className="overflow-hidden bg-background py-24 md:py-36" aria-labelledby="port-title">
       <div className="mx-auto max-w-7xl px-5 md:px-10">
         <div className="max-w-2xl">
           <p className="eyebrow text-plum-soft">Portfólio</p>
@@ -69,7 +69,7 @@ export function Portfolio() {
             Vídeos em destaque
           </h3>
 
-          <div className="perspective-deep relative mt-14 h-[20rem] sm:h-[26rem]">
+          <div className="perspective-deep relative mt-14 h-[20rem] overflow-hidden sm:h-[26rem]">
             {VIDEOS.map((video, index) => {
               const offset = index - active;
               const abs = Math.abs(offset);
