@@ -1,0 +1,55 @@
+import { Plus, Sparkles } from "lucide-react";
+import { SERVICES } from "@/lib/content";
+
+export function Services() {
+  return (
+    <section
+      id="servicos"
+      className="relative overflow-hidden bg-ink py-24 md:py-36"
+      aria-labelledby="servicos-title"
+    >
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-1/2 top-0 size-[36rem] -translate-x-1/2 rounded-full bg-plum/40 blur-[140px]"
+      />
+      <div className="relative mx-auto max-w-7xl px-5 md:px-10">
+        <div className="max-w-2xl">
+          <p className="eyebrow text-gold">O que eu faço</p>
+          <h2
+            id="servicos-title"
+            className="font-heading mt-5 text-[clamp(2rem,5.5vw,4rem)] leading-[0.95] text-cream"
+          >
+            Meus serviços
+          </h2>
+          <p className="mt-6 text-base leading-relaxed text-cream/60">
+            Do planejamento estratégico à entrega final, cada serviço é pensado para gerar conexão
+            real com o seu público.
+          </p>
+        </div>
+
+        <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {SERVICES.map((service) => (
+            <article
+              key={service.title}
+              className="group relative overflow-hidden rounded-brand-lg border border-cream/10 bg-cream/[0.04] p-7 transition-all duration-500 hover:-translate-y-1.5 hover:border-gold/40 hover:bg-cream/[0.07]"
+            >
+              <div className="perspective-deep mb-7">
+                <div className="preserve-3d relative size-12 transition-transform duration-700 group-hover:[transform:rotateY(180deg)]">
+                  <span className="backface-hidden absolute inset-0 grid place-items-center rounded-2xl bg-gradient-plum text-gold-soft">
+                    <Sparkles className="size-5" />
+                  </span>
+                  <span className="backface-hidden absolute inset-0 grid place-items-center rounded-2xl bg-gradient-gold text-ink [transform:rotateY(180deg)]">
+                    <Plus className="size-6" />
+                  </span>
+                </div>
+              </div>
+
+              <h3 className="font-display text-2xl leading-tight text-cream">{service.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-cream/55">{service.desc}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
