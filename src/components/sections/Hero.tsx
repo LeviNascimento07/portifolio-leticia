@@ -5,7 +5,7 @@ import { HERO_DECK } from "@/lib/content";
 export function Hero() {
   const [order, setOrder] = useState(() => HERO_DECK.map((_, i) => i));
 
-  const flip = () => setOrder((prev) => [...prev.slice(1), prev[0]]);
+  const flip = () => setOrder((prev) => prev.slice(1).concat(prev.slice(0, 1)));
 
   return (
     <section
