@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ArrowUpRight, Hand } from "lucide-react";
-import { HERO_DECK } from "@/lib/content";
+import { HERO_DECK, WHATSAPP_LINK } from "@/lib/content";
 
 export function Hero() {
   const [order, setOrder] = useState(() => HERO_DECK.map((_, i) => i));
@@ -43,12 +43,15 @@ export function Hero() {
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <a
-              href="#contato"
+              href={WHATSAPP_LINK}
+              target="_blank"
+              rel="noreferrer noopener"
               className="press-deep shadow-gold inline-flex items-center gap-2 rounded-full bg-gradient-gold px-8 py-4 text-xs font-semibold tracking-widest text-ink uppercase"
             >
               Solicitar Orçamento
               <ArrowUpRight className="size-4" />
             </a>
+
             <a
               href="#portfolio"
               className="inline-flex items-center gap-2 rounded-full border border-cream/25 px-8 py-4 text-xs font-semibold tracking-widest text-cream/80 uppercase transition-colors hover:border-gold hover:text-gold"

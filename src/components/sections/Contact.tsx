@@ -1,12 +1,15 @@
 import { ArrowUpRight, Instagram, Mail, MessageCircle } from "lucide-react";
-import { CONTACTS } from "@/lib/content";
+import { Link } from "@tanstack/react-router";
+import { CONTACTS, EMAIL_ADDRESS, INSTAGRAM_HANDLE } from "@/lib/content";
 import { Monogram } from "@/components/brand/Monogram";
+import { ContactForm } from "@/components/sections/ContactForm";
 
 const LINKS = [
-  { href: CONTACTS.instagram, label: "Instagram", icon: Instagram, hint: "@leticiacavalcante" },
-  { href: CONTACTS.whatsapp, label: "WhatsApp", icon: MessageCircle, hint: "Resposta rápida" },
-  { href: CONTACTS.email, label: "E-mail", icon: Mail, hint: "Orçamentos e parcerias" },
+  { href: CONTACTS.instagram, label: "Instagram", icon: Instagram, hint: INSTAGRAM_HANDLE },
+  { href: CONTACTS.whatsapp, label: "WhatsApp", icon: MessageCircle, hint: "(85) 99909-9175" },
+  { href: CONTACTS.email, label: "E-mail", icon: Mail, hint: EMAIL_ADDRESS },
 ];
+
 
 export function Contact() {
   return (
@@ -41,11 +44,15 @@ export function Contact() {
 
         <a
           href={CONTACTS.whatsapp}
+          target="_blank"
+          rel="noreferrer noopener"
           className="press-deep shadow-gold mt-12 inline-flex items-center gap-2 rounded-full bg-gradient-gold px-10 py-5 text-xs font-semibold tracking-[0.22em] text-ink uppercase"
         >
-          Solicitar Orçamento
+          Solicitar Orçamento no WhatsApp
           <ArrowUpRight className="size-4" />
         </a>
+
+        <ContactForm />
 
         <div className="mt-16 grid gap-4 sm:grid-cols-3">
           {LINKS.map((link) => (
@@ -58,7 +65,7 @@ export function Contact() {
             >
               <link.icon className="mx-auto size-5 text-gold transition-transform duration-500 group-hover:scale-110" />
               <p className="mt-4 text-sm font-medium text-cream">{link.label}</p>
-              <p className="mt-1 text-xs text-cream/50">{link.hint}</p>
+              <p className="mt-1 break-words text-xs text-cream/50">{link.hint}</p>
             </a>
           ))}
         </div>
@@ -69,7 +76,14 @@ export function Contact() {
           <p className="text-[0.62rem] tracking-[0.28em] text-cream/40 uppercase">
             Social Media • Storymaker • Filmmaker
           </p>
+          <Link
+            to="/privacidade"
+            className="text-xs text-cream/50 underline transition-colors hover:text-gold"
+          >
+            Política de Privacidade
+          </Link>
         </div>
+
       </div>
     </section>
   );
