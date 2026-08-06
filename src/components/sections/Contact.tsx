@@ -1,12 +1,15 @@
 import { ArrowUpRight, Instagram, Mail, MessageCircle } from "lucide-react";
-import { CONTACTS } from "@/lib/content";
+import { Link } from "@tanstack/react-router";
+import { CONTACTS, EMAIL_ADDRESS, INSTAGRAM_HANDLE } from "@/lib/content";
 import { Monogram } from "@/components/brand/Monogram";
+import { ContactForm } from "@/components/sections/ContactForm";
 
 const LINKS = [
-  { href: CONTACTS.instagram, label: "Instagram", icon: Instagram, hint: "@leticiacavalcante" },
-  { href: CONTACTS.whatsapp, label: "WhatsApp", icon: MessageCircle, hint: "Resposta rápida" },
-  { href: CONTACTS.email, label: "E-mail", icon: Mail, hint: "Orçamentos e parcerias" },
+  { href: CONTACTS.instagram, label: "Instagram", icon: Instagram, hint: INSTAGRAM_HANDLE },
+  { href: CONTACTS.whatsapp, label: "WhatsApp", icon: MessageCircle, hint: "(85) 99909-9175" },
+  { href: CONTACTS.email, label: "E-mail", icon: Mail, hint: EMAIL_ADDRESS },
 ];
+
 
 export function Contact() {
   return (
