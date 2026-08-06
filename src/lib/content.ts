@@ -164,8 +164,16 @@ export const VIDEOS = [
   },
 ];
 
+export const WHATSAPP_NUMBER = "5585999099175";
+export const WHATSAPP_MESSAGE =
+  "Olá! Vim pelo site e quero saber mais sobre os pacotes de Social Media.";
+export const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+export const EMAIL_ADDRESS = "leticiasousa1492@gmail.com";
+export const INSTAGRAM_HANDLE = "@leticia_cavalcante_sousa";
+
 export const CONTACTS = {
-  instagram: "https://instagram.com/",
-  whatsapp: "https://wa.me/5500000000000",
-  email: "mailto:contato@leticiacavalcante.com",
+  instagram: "https://instagram.com/leticia_cavalcante_sousa",
+  whatsapp: WHATSAPP_LINK,
+  email: `mailto:${EMAIL_ADDRESS}`,
 };
+
