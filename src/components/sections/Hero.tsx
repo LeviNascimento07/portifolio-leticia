@@ -4,6 +4,7 @@ import { HERO_DECK, WHATSAPP_LINK } from "@/lib/content";
 
 export function Hero() {
   const [order, setOrder] = useState(() => HERO_DECK.map((_, i) => i));
+  const [loaded, setLoaded] = useState<boolean[]>(() => HERO_DECK.map(() => false));
 
   const flip = () => setOrder((prev) => prev.slice(1).concat(prev.slice(0, 1)));
 
@@ -15,7 +16,7 @@ export function Hero() {
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -left-32 top-10 size-[32rem] rounded-full bg-plum/50 blur-[120px]"
+        className="pointer-events-none absolute -left-32 top-10 size-[32rem] rounded-full bg-nude/15 blur-[120px]"
       />
       <div
         aria-hidden="true"
@@ -49,7 +50,7 @@ export function Hero() {
               className="press-deep shadow-gold inline-flex items-center gap-2 rounded-full bg-gradient-gold px-8 py-4 text-xs font-semibold tracking-widest text-ink uppercase"
             >
               Solicitar Orçamento
-              <ArrowUpRight className="size-4" />
+              <ArrowUpRight className="size-4" aria-hidden="true" />
             </a>
 
             <a
@@ -65,31 +66,68 @@ export function Hero() {
           <button
             type="button"
             onClick={flip}
-            aria-label="Folhear as fotos do portfólio"
-            className="relative block aspect-[4/5] w-full cursor-pointer preserve-3d"
+            aria-label="Folhear as fotos do portfólio de Letícia Cavalcante Sousa. Pressione Enter ou espaço para ver a próxima foto."
+            className="relative block aspect-[4/5] w-full cursor-pointer preserve-3d focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-8"
           >
             {HERO_DECK.map((src, index) => {
               const position = order.indexOf(index);
               const rotate = [-1, 5, -7, 10][position] ?? 0;
+              const isLoaded = loaded[index];
+              return (
+                <span
+                  key={src}
+                  aria-hidden="true"
+                  className="absolute inset-0 animate-pulse rounded-brand-lg bg-gradient-to-br from-cream/10 via-cream/5 to-cream/10 backface-hidden"
+                  style={{
+                    zIndex: HERO_DECK.length - position,
+                    transform: `translate3d(${position * 14}px, ${position * -10}px, ${position * -60}px) rotate(${rotate}deg) scale(${1 - position * 0.03})`,
+                    opacity: isLoaded || position > 3 ? 0 : 1 - position * 0.12,
+                    transition: "opacity 0.5s ease",
+                  }}
+                />
+              );
+            })}
+            {HERO_DECK.map((src, index) => {
+              const position = order.indexOf(index);
+              const rotate = [-1, 5, -7, 10][position] ?? 0;
+              const isLoaded = loaded[index];
               return (
                 <img
                   key={src}
                   src={src}
                   alt="Trabalho autoral de Letícia Cavalcante Sousa"
                   loading={position === 0 ? "eager" : "lazy"}
+                  ref={(el) => {
+                    // Imagem local pode terminar de carregar antes do onLoad ser anexado (o
+                    // <img> já chega "complete" no commit) — sem isso, fica travada em opacity 0.
+                    if (el?.complete) {
+                      setLoaded((prev) =>
+                        prev[index] ? prev : prev.map((v, i) => (i === index ? true : v)),
+                      );
+                    }
+                  }}
+                  onLoad={() =>
+                    setLoaded((prev) => prev.map((value, i) => (i === index ? true : value)))
+                  }
                   className="absolute inset-0 size-full rounded-brand-lg object-cover shadow-lift backface-hidden transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
                   style={{
                     zIndex: HERO_DECK.length - position,
                     transform: `translate3d(${position * 14}px, ${position * -10}px, ${position * -60}px) rotate(${rotate}deg) scale(${1 - position * 0.03})`,
-                    opacity: position > 3 ? 0 : 1 - position * 0.12,
-                    filter: position === 0 ? "none" : "saturate(0.75) brightness(0.8)",
+                    opacity: !isLoaded ? 0 : position > 3 ? 0 : 1 - position * 0.12,
+                    filter:
+                      position === 0
+                        ? "none"
+                        : `saturate(0.75) brightness(0.8) ${isLoaded ? "" : "blur(12px)"}`,
                   }}
                 />
               );
             })}
           </button>
 
-          <span className="pointer-events-none absolute -bottom-12 left-1/2 flex -translate-x-1/2 items-center gap-2 text-[0.68rem] tracking-[0.3em] text-cream/50 uppercase">
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute -bottom-12 left-1/2 flex -translate-x-1/2 items-center gap-2 text-[0.68rem] tracking-[0.3em] text-cream/50 uppercase"
+          >
             <Hand className="size-3.5" /> Clique para folhear
           </span>
         </div>

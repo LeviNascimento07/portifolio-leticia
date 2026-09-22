@@ -9,6 +9,7 @@ import { Portfolio } from "@/components/sections/Portfolio";
 import { Contact } from "@/components/sections/Contact";
 import { WhatsAppFloat } from "@/components/brand/WhatsAppFloat";
 import { CookieBanner } from "@/components/brand/CookieBanner";
+import { BackToTop } from "@/components/brand/BackToTop";
 import { CONTACTS, EMAIL_ADDRESS, SERVICES, WHATSAPP_NUMBER } from "@/lib/content";
 
 const TITLE = "Letícia Cavalcante Sousa | Social Media & Filmmaker";
@@ -105,6 +106,7 @@ function Index() {
       <Portfolio />
       <Contact />
       <WhatsAppFloat />
+      <BackToTop />
       <CookieBanner />
     </main>
   );

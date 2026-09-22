@@ -20,13 +20,25 @@ dist-ssr
 .wrangler/
 .dev.vars
 
+# Segredos locais (chave service_role do Supabase etc.) — nunca commitar
+.env
+.env.local
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
 .idea
+
+# Claude Code local config/skills (CLAUDE.md at repo root stays tracked)
+.claude/
 .DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# Material bruto de fotos/vídeos/PDFs de Letícia (1GB+, organizado localmente em
+# public/assets/ como backup/staging — a hospedagem real já é o Supabase Storage, ver
+# src/lib/ARCHITECTURE.md). Grande demais e desnecessário pro git.
+/public/assets/

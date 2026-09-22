@@ -23,7 +23,7 @@ export function About() {
             loading="lazy"
             className="relative aspect-[4/5] w-full rounded-brand-lg object-cover shadow-soft"
           />
-          <div className="absolute -bottom-6 right-4 rounded-brand bg-gradient-plum px-6 py-4 shadow-lift sm:right-8">
+          <div className="absolute -bottom-6 right-4 rounded-brand bg-gradient-ink px-6 py-4 shadow-lift sm:right-8">
             <p className="font-display text-3xl text-gold-soft">+6</p>
             <p className="text-[0.65rem] tracking-[0.25em] text-cream/70 uppercase">
               anos de estrada
@@ -32,12 +32,12 @@ export function About() {
         </div>
 
         <div>
-          <p className="eyebrow text-plum-soft">Sobre mim</p>
+          <p className="eyebrow text-gold">Sobre mim</p>
           <h2
             id="sobre-title"
             className="mt-5 font-display text-[clamp(2.25rem,5vw,3.75rem)] leading-[1.02] text-foreground"
           >
-            Estratégia com <span className="text-plum">sensibilidade</span> e olhar autoral
+            Estratégia com <span className="text-gold">sensibilidade</span> e olhar autoral
           </h2>
           <p className="mt-8 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
             Eu ajudo negócios a fortalecer sua presença digital através de estratégia, criação de

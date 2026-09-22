@@ -10,7 +10,7 @@ export function Services() {
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute left-1/2 top-0 size-[36rem] -translate-x-1/2 rounded-full bg-plum/40 blur-[140px]"
+        className="pointer-events-none absolute left-1/2 top-0 size-[36rem] -translate-x-1/2 rounded-full bg-gold/10 blur-[140px]"
       />
       <div className="relative mx-auto max-w-7xl px-5 md:px-10">
         <div className="max-w-2xl">
@@ -33,9 +33,9 @@ export function Services() {
               key={service.title}
               className="group relative overflow-hidden rounded-brand-lg border border-cream/10 bg-cream/[0.04] p-7 transition-all duration-500 hover:-translate-y-1.5 hover:border-gold/40 hover:bg-cream/[0.07]"
             >
-              <div className="perspective-deep mb-7">
+              <div className="perspective-deep mb-7" aria-hidden="true">
                 <div className="preserve-3d relative size-12 transition-transform duration-700 group-hover:[transform:rotateY(180deg)]">
-                  <span className="backface-hidden absolute inset-0 grid place-items-center rounded-2xl bg-gradient-plum text-gold-soft">
+                  <span className="backface-hidden absolute inset-0 grid place-items-center rounded-2xl bg-gradient-ink text-gold-soft">
                     <Sparkles className="size-5" />
                   </span>
                   <span className="backface-hidden absolute inset-0 grid place-items-center rounded-2xl bg-gradient-gold text-ink [transform:rotateY(180deg)]">

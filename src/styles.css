@@ -6,7 +6,7 @@
 
 /*
  * Letícia Cavalcante Sousa — personal brand design system.
- * Deep purple + gold luxury palette. All colors in oklch.
+ * Preto profundo + dourado champagne luxury palette.
  */
 
 @theme inline {
@@ -44,68 +44,70 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  --color-plum: var(--plum);
-  --color-plum-soft: var(--plum-soft);
+  --color-ink-soft: var(--ink-soft);
   --color-gold: var(--gold);
   --color-gold-soft: var(--gold-soft);
   --color-ink: var(--ink);
   --color-cream: var(--cream);
   --color-surface: var(--surface);
+  --color-gray: var(--gray);
+  --color-nude: var(--nude);
 }
 
 :root {
   --radius: 1rem;
 
   /* brand */
-  --plum: oklch(0.256 0.144 313.5); /* #3A0353 */
-  --plum-soft: oklch(0.494 0.111 322.4); /* #804A8A */
-  --gold: oklch(0.774 0.132 61.3); /* #F59E51 */
-  --gold-soft: oklch(0.886 0.072 76.6); /* #F8D299 */
-  --ink: oklch(0.116 0.021 315); /* #0A0008 */
-  --cream: oklch(0.982 0.008 80);
-  --surface: oklch(0.995 0.002 80);
+  --ink: #0b0d0f; /* preto profundo */
+  --ink-soft: #16191c; /* variação do preto, para profundidade em gradientes/cards escuros */
+  --gold: #d6b36a; /* dourado champagne */
+  --gold-soft: #f1d79a; /* dourado claro */
+  --cream: #f7f3ea; /* off-white */
+  --gray: #a7a7a3; /* cinza elegante */
+  --nude: #c9a99a; /* nude rosado */
+  --surface: #ffffff;
 
-  --background: oklch(0.995 0.002 80);
+  --background: var(--cream);
   --foreground: var(--ink);
-  --card: oklch(1 0 0);
+  --card: #ffffff;
   --card-foreground: var(--ink);
-  --popover: oklch(1 0 0);
+  --popover: #ffffff;
   --popover-foreground: var(--ink);
-  --primary: var(--plum);
-  --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.96 0.012 320);
-  --secondary-foreground: var(--plum);
-  --muted: oklch(0.965 0.008 320);
-  --muted-foreground: oklch(0.52 0.03 315);
+  --primary: var(--ink);
+  --primary-foreground: var(--cream);
+  --secondary: #efeae0;
+  --secondary-foreground: var(--ink);
+  --muted: #efeae0;
+  --muted-foreground: var(--gray);
   --accent: var(--gold);
   --accent-foreground: var(--ink);
   --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.99 0 0);
-  --border: oklch(0.9 0.014 320);
-  --input: oklch(0.9 0.014 320);
-  --ring: var(--plum-soft);
+  --destructive-foreground: #ffffff;
+  --border: #e4e0d6;
+  --input: #e4e0d6;
+  --ring: var(--gold);
 
-  --gradient-plum: linear-gradient(135deg, var(--plum), var(--plum-soft));
+  --gradient-ink: linear-gradient(135deg, var(--ink), var(--ink-soft));
   --gradient-gold: linear-gradient(135deg, var(--gold), var(--gold-soft));
-  --gradient-luxe: linear-gradient(120deg, var(--plum) 0%, var(--plum-soft) 55%, var(--gold) 130%);
-  --shadow-soft: 0 18px 50px -24px oklch(0.256 0.144 313.5 / 0.35);
-  --shadow-lift: 0 34px 90px -30px oklch(0.256 0.144 313.5 / 0.5);
-  --shadow-gold: 0 20px 50px -20px oklch(0.774 0.132 61.3 / 0.55);
+  --gradient-luxe: linear-gradient(120deg, var(--ink) 0%, var(--ink-soft) 55%, var(--gold) 130%);
+  --shadow-soft: 0 18px 50px -24px rgba(11, 13, 15, 0.35);
+  --shadow-lift: 0 34px 90px -30px rgba(11, 13, 15, 0.5);
+  --shadow-gold: 0 20px 50px -20px rgba(214, 179, 106, 0.55);
 }
 
 .dark {
   --background: var(--ink);
   --foreground: var(--cream);
-  --card: oklch(0.19 0.05 315);
+  --card: var(--ink-soft);
   --card-foreground: var(--cream);
-  --popover: oklch(0.19 0.05 315);
+  --popover: var(--ink-soft);
   --popover-foreground: var(--cream);
   --primary: var(--gold);
   --primary-foreground: var(--ink);
-  --secondary: oklch(0.26 0.07 315);
+  --secondary: #24272a;
   --secondary-foreground: var(--cream);
-  --muted: oklch(0.24 0.06 315);
-  --muted-foreground: oklch(0.72 0.03 320);
+  --muted: #202325;
+  --muted-foreground: var(--gray);
   --accent: var(--gold);
   --accent-foreground: var(--ink);
   --border: oklch(1 0 0 / 12%);
@@ -120,6 +122,8 @@
 
   html {
     scroll-behavior: smooth;
+    /* navbar fixa (~4.75rem) + respiro extra, para nenhuma seção ficar escondida atrás dela */
+    scroll-padding-top: 6rem;
   }
 
   body {
@@ -132,6 +136,18 @@
   ::selection {
     background: var(--gold);
     color: var(--ink);
+  }
+
+  /* Foco visível consistente em todos os elementos interativos "cruos" do site
+     (botões/links/divs role=button escritos à mão). Componentes shadcn/Radix já
+     definem seu próprio anel de foco via utilities do Tailwind, que sempre vence
+     esta regra por estar numa camada de cascata posterior — não precisa de exceção aqui. */
+  a:focus-visible,
+  button:focus-visible,
+  [role="button"]:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
   }
 }
 
@@ -166,8 +182,8 @@
   background-image: var(--gradient-luxe);
 }
 
-@utility bg-gradient-plum {
-  background-image: var(--gradient-plum);
+@utility bg-gradient-ink {
+  background-image: var(--gradient-ink);
 }
 
 @utility bg-gradient-gold {

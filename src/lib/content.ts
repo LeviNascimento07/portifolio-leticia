@@ -1,12 +1,13 @@
+import { SUPABASE_STORAGE_BASE } from "@/lib/supabase-storage";
+
+// Fotos profissionais reais de Letícia (substituem os placeholders do Unsplash) — compartilhadas
+// pelos dois sites, ver src/lib/ARCHITECTURE.md.
 export const HERO_DECK = [
-  "https://images.unsplash.com/photo-1606216794074-735e91aa2c92?auto=format&fit=crop&w=900&q=80",
-  "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80",
-  "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=900&q=80",
-  "https://images.unsplash.com/photo-1533228100845-08145b01de14?auto=format&fit=crop&w=900&q=80",
+  `${SUPABASE_STORAGE_BASE}/assets/perfil/retrato.png`,
+  `${SUPABASE_STORAGE_BASE}/assets/perfil/mesa-trabalho.png`,
 ];
 
-export const ABOUT_IMAGE =
-  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1000&q=80";
+export const ABOUT_IMAGE = `${SUPABASE_STORAGE_BASE}/assets/perfil/mesa-trabalho.png`;
 
 export const SERVICES = [
   {
@@ -176,4 +177,3 @@ export const CONTACTS = {
   whatsapp: WHATSAPP_LINK,
   email: `mailto:${EMAIL_ADDRESS}`,
 };
-

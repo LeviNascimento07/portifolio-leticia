@@ -10,11 +10,19 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as PrivacidadeRouteImport } from './routes/privacidade'
+import { Route as PortfolioIndexRouteImport } from './routes/portfolio.index'
+import { Route as PortfolioPlanejamentosSlugRouteImport } from './routes/portfolio.planejamentos.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortfolioRoute = PortfolioRouteImport.update({
+  id: '/portfolio',
+  path: '/portfolio',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacidadeRoute = PrivacidadeRouteImport.update({
@@ -22,30 +30,61 @@ const PrivacidadeRoute = PrivacidadeRouteImport.update({
   path: '/privacidade',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PortfolioIndexRoute = PortfolioIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => PortfolioRoute,
+} as any)
+const PortfolioPlanejamentosSlugRoute =
+  PortfolioPlanejamentosSlugRouteImport.update({
+    id: '/planejamentos/$slug',
+    path: '/planejamentos/$slug',
+    getParentRoute: () => PortfolioRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/portfolio': typeof PortfolioRouteWithChildren
   '/privacidade': typeof PrivacidadeRoute
+  '/portfolio/': typeof PortfolioIndexRoute
+  '/portfolio/planejamentos/$slug': typeof PortfolioPlanejamentosSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/privacidade': typeof PrivacidadeRoute
+  '/portfolio': typeof PortfolioIndexRoute
+  '/portfolio/planejamentos/$slug': typeof PortfolioPlanejamentosSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/portfolio': typeof PortfolioRouteWithChildren
   '/privacidade': typeof PrivacidadeRoute
+  '/portfolio/': typeof PortfolioIndexRoute
+  '/portfolio/planejamentos/$slug': typeof PortfolioPlanejamentosSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/privacidade'
+  fullPaths:
+    | '/'
+    | '/portfolio'
+    | '/privacidade'
+    | '/portfolio/'
+    | '/portfolio/planejamentos/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/privacidade'
-  id: '__root__' | '/' | '/privacidade'
+  to: '/' | '/privacidade' | '/portfolio' | '/portfolio/planejamentos/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/portfolio'
+    | '/privacidade'
+    | '/portfolio/'
+    | '/portfolio/planejamentos/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  PortfolioRoute: typeof PortfolioRouteWithChildren
   PrivacidadeRoute: typeof PrivacidadeRoute
 }
 
@@ -58,6 +97,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/portfolio': {
+      id: '/portfolio'
+      path: '/portfolio'
+      fullPath: '/portfolio'
+      preLoaderRoute: typeof PortfolioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/privacidade': {
       id: '/privacidade'
       path: '/privacidade'
@@ -65,13 +111,52 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacidadeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/portfolio/': {
+      id: '/portfolio/'
+      path: '/'
+      fullPath: '/portfolio/'
+      preLoaderRoute: typeof PortfolioIndexRouteImport
+      parentRoute: typeof PortfolioRoute
+    }
+    '/portfolio/planejamentos/$slug': {
+      id: '/portfolio/planejamentos/$slug'
+      path: '/planejamentos/$slug'
+      fullPath: '/portfolio/planejamentos/$slug'
+      preLoaderRoute: typeof PortfolioPlanejamentosSlugRouteImport
+      parentRoute: typeof PortfolioRoute
+    }
   }
 }
 
+interface PortfolioRouteChildren {
+  PortfolioIndexRoute: typeof PortfolioIndexRoute
+  PortfolioPlanejamentosSlugRoute: typeof PortfolioPlanejamentosSlugRoute
+}
+
+const PortfolioRouteChildren: PortfolioRouteChildren = {
+  PortfolioIndexRoute: PortfolioIndexRoute,
+  PortfolioPlanejamentosSlugRoute: PortfolioPlanejamentosSlugRoute,
+}
+
+const PortfolioRouteWithChildren = PortfolioRoute._addFileChildren(
+  PortfolioRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  PortfolioRoute: PortfolioRouteWithChildren,
   PrivacidadeRoute: PrivacidadeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

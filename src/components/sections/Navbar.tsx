@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { Monogram } from "@/components/brand/Monogram";
 
 const LINKS = [
@@ -49,6 +50,12 @@ export function Navbar() {
               {link.label}
             </a>
           ))}
+          <Link
+            to="/portfolio"
+            className="text-sm font-light text-cream/70 transition-colors hover:text-gold"
+          >
+            Portfólio completo
+          </Link>
           <a
             href="#contato"
             className="press-deep rounded-full bg-gradient-gold px-6 py-2.5 text-xs font-semibold tracking-wide text-ink uppercase"
@@ -63,7 +70,11 @@ export function Navbar() {
           aria-label={open ? "Fechar menu" : "Abrir menu"}
           className="grid size-11 shrink-0 place-items-center rounded-full border border-cream/20 text-cream lg:hidden"
         >
-          {open ? <X className="size-5" /> : <Menu className="size-5" />}
+          {open ? (
+            <X className="size-5" aria-hidden="true" />
+          ) : (
+            <Menu className="size-5" aria-hidden="true" />
+          )}
         </button>
       </div>
 
@@ -75,11 +86,18 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="rounded-2xl px-4 py-3 font-display text-2xl text-cream/85 transition-colors hover:bg-plum/60 hover:text-gold"
+                className="rounded-2xl px-4 py-3 font-display text-2xl text-cream/85 transition-colors hover:bg-gold/10 hover:text-gold"
               >
                 {link.label}
               </a>
             ))}
+            <Link
+              to="/portfolio"
+              onClick={() => setOpen(false)}
+              className="rounded-2xl px-4 py-3 font-display text-2xl text-cream/85 transition-colors hover:bg-gold/10 hover:text-gold"
+            >
+              Portfólio completo
+            </Link>
             <a
               href="#contato"
               onClick={() => setOpen(false)}

@@ -52,7 +52,7 @@ export function Results() {
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-1/2 h-64 -translate-y-1/2 bg-gradient-plum opacity-25 blur-[120px]"
+        className="pointer-events-none absolute inset-x-0 top-1/2 h-64 -translate-y-1/2 bg-gradient-gold opacity-15 blur-[120px]"
       />
       <div ref={ref} className="relative mx-auto max-w-7xl px-5 md:px-10">
         <div className="mx-auto max-w-2xl text-center">
