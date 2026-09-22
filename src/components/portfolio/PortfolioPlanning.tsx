@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowUpRight, Folder, Plus } from "lucide-react";
+import { Folder, Plus } from "lucide-react";
 import { CONTENT_PLANS } from "@/lib/portfolio-content";
 import { BlurImage } from "@/components/ui/blur-image";
 import { PlanPostLightbox } from "@/components/portfolio/PlanPostLightbox";
@@ -90,19 +90,6 @@ export function PortfolioPlanning() {
             onClose={() => setLightbox(null)}
           />
         )}
-
-        <div className="mt-24 rounded-brand-lg bg-gradient-luxe p-10 text-center shadow-lift sm:p-14">
-          <p className="font-display text-2xl italic text-cream sm:text-3xl">
-            "Cada conteúdo começa com uma estratégia."
-          </p>
-          <a
-            href="#contato"
-            className="press-deep mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-gold px-8 py-4 text-xs font-semibold tracking-widest text-ink uppercase"
-          >
-            Quero criar meu conteúdo
-            <ArrowUpRight className="size-4" aria-hidden="true" />
-          </a>
-        </div>
       </div>
     </section>
   );

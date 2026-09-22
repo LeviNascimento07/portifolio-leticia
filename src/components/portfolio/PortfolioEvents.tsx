@@ -2,6 +2,7 @@ import { useState } from "react";
 import { EVENT_CATEGORIES, EVENTS, type EventCategory } from "@/lib/portfolio-content";
 import { EmptyState } from "@/components/portfolio/EmptyState";
 import { BlurImage } from "@/components/ui/blur-image";
+import { PlanPostLightbox } from "@/components/portfolio/PlanPostLightbox";
 
 export function PortfolioEvents() {
   const [filter, setFilter] = useState<"Todos" | EventCategory>("Todos");
@@ -9,6 +10,10 @@ export function PortfolioEvents() {
   const visible = EVENTS.filter((e) => e.imageAuthorized).filter(
     (e) => filter === "Todos" || e.category === filter,
   );
+  const eventPosts = visible.flatMap((event) =>
+    event.photos.map((image) => ({ image, format: "Foto", theme: event.title, objective: "" })),
+  );
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   return (
     <section
@@ -55,22 +60,32 @@ export function PortfolioEvents() {
           </div>
         ) : (
           <div className="mt-10 columns-2 gap-5 lg:columns-3 [&>*]:mb-5">
-            {visible.flatMap((event) =>
-              event.photos.map((photo, i) => (
-                <figure
-                  key={`${event.title}-${i}`}
-                  className="overflow-hidden rounded-brand break-inside-avoid shadow-lift"
-                >
+            {eventPosts.map((post, index) => (
+              <button
+                key={post.image}
+                type="button"
+                onClick={() => setLightboxIndex(index)}
+                aria-label={`Ver foto ${index + 1} de ${post.theme} em tamanho maior`}
+                className="press-deep group block w-full overflow-hidden rounded-brand break-inside-avoid shadow-lift transition-shadow duration-500 hover:shadow-gold"
+              >
                   <BlurImage
-                    src={photo}
-                    alt={event.title}
+                    src={post.image ?? ""}
+                    alt={post.theme}
                     containerClassName="w-full"
-                    className="w-full object-cover"
+                    className="w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                </figure>
-              )),
-            )}
+              </button>
+            ))}
           </div>
+        )}
+
+        {lightboxIndex !== null && (
+          <PlanPostLightbox
+            posts={eventPosts}
+            index={lightboxIndex}
+            onIndexChange={setLightboxIndex}
+            onClose={() => setLightboxIndex(null)}
+          />
         )}
       </div>
     </section>

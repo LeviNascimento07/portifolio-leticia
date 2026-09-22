@@ -46,7 +46,10 @@ export function PortfolioResults() {
         ) : (
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {accounts.map((item) => (
-              <div key={item.account} className="overflow-hidden rounded-brand-lg shadow-soft">
+              <div
+                key={item.account}
+                className="group overflow-hidden rounded-brand-lg border border-transparent shadow-soft transition-all duration-500 hover:-translate-y-1.5 hover:border-gold/50 hover:shadow-lift"
+              >
                 <div
                   className={`grid gap-0.5 ${item.images.length > 1 ? "grid-cols-2" : "grid-cols-1"}`}
                 >
@@ -56,19 +59,21 @@ export function PortfolioResults() {
                       type="button"
                       onClick={() => setLightbox({ account: item.account, index: i })}
                       aria-label={`Ver print ${i + 1} de ${item.account} em tamanho maior`}
-                      className="press-deep"
+                      className="press-deep overflow-hidden"
                     >
                       <BlurImage
                         src={image}
                         alt={`Resultados de ${item.account}`}
                         containerClassName="aspect-[4/3] w-full"
-                        className="size-full object-cover"
+                        className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
                       />
                     </button>
                   ))}
                 </div>
-                <div className="bg-card px-5 py-3">
-                  <p className="text-sm font-semibold text-foreground">{item.account}</p>
+                <div className="bg-card px-5 py-3 transition-colors duration-500 group-hover:bg-gold/[0.05]">
+                  <p className="text-sm font-semibold text-foreground transition-colors duration-500 group-hover:text-gold">
+                    {item.account}
+                  </p>
                 </div>
               </div>
             ))}

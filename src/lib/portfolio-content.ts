@@ -277,6 +277,17 @@ export const CONTENT_PLANS: ContentPlan[] = [
       "Customização de roupas",
       "Estúdio de customização de roupas (estampas e peças personalizadas), incluindo produções temáticas como a Copa do Mundo.",
     ),
+    posts: [
+      photoPost(
+        `${SUPABASE_STORAGE_BASE}/assets/portfolio/planejamentos/vitinarte/fotos/post-01.jpg`,
+      ),
+      photoPost(
+        `${SUPABASE_STORAGE_BASE}/assets/portfolio/planejamentos/vitinarte/fotos/post-02.jpg`,
+      ),
+      photoPost(
+        `${SUPABASE_STORAGE_BASE}/assets/portfolio/planejamentos/vitinarte/fotos/post-03.jpg`,
+      ),
+    ],
     videos: [
       `${SUPABASE_STORAGE_BASE}/assets/portfolio/planejamentos/vitinarte/videos/video-02.mp4`,
       `${SUPABASE_STORAGE_BASE}/assets/portfolio/planejamentos/vitinarte/videos/video-03.mp4`,
@@ -339,6 +350,62 @@ export const CONTENT_PLANS: ContentPlan[] = [
     },
   },
 ];
+
+// Conteúdos publicados no Instagram e fornecidos diretamente por Letícia. A página não hospeda
+// esses arquivos: cada card abre o post/reel em um player incorporado na própria página.
+export const PORTFOLIO_VIDEOS = [
+  {
+    slug: "reserva-open-mall",
+    client: "Reserva Open Mall",
+    items: [
+      { type: "Reel", url: "https://www.instagram.com/reel/DcttHI1RrEW/?stkn=MW90dm5nOWRrbWp2cg==" },
+      { type: "Reel", url: "https://www.instagram.com/reel/Dcywe--RJDd/?stkn=emhmMjV3aHl3bWxw" },
+      { type: "Publicação", url: "https://www.instagram.com/p/Da6FcaRkaY9/?img_index=2&stkn=MWR6bmR4anN5cjVqNA==" },
+    ],
+  },
+  {
+    slug: "b-imperio-pratas",
+    client: "B Império Pratas",
+    items: [
+      { type: "Reel", url: "https://www.instagram.com/reel/Dc8wMZ5O2oX/?stkn=MWFrem83OWp3dTRraw==" },
+      { type: "Reel", url: "https://www.instagram.com/reel/DbyLaEYOtSJ/?stkn=MXFnaHNwbmNkbmd3NA==" },
+      { type: "Publicação", url: "https://www.instagram.com/p/DbyB96HFqvw/?stkn=MWUwemo4eXg3eGoy" },
+    ],
+  },
+  {
+    slug: "ley-colchoes",
+    client: "Ley Colchões",
+    items: [
+      { type: "Publicação", url: "https://www.instagram.com/p/DcvuD4PIALs/?stkn=MTcyNnM4djA5aTRxMw==" },
+      { type: "Reel", url: "https://www.instagram.com/reel/DaRBmCnxKKC/?stkn=Mm1rdGR0NzYxZzZq" },
+    ],
+  },
+  {
+    slug: "ley-moveis",
+    client: "Ley Móveis",
+    items: [
+      { type: "Publicação", url: "https://www.instagram.com/p/DcgRRVzoJYi/?img_index=2&stkn=MXB4M3hvam9wYXRpaQ==" },
+      { type: "Reel", url: "https://www.instagram.com/reel/DbnuctORZh7/?stkn=bjV2OHFpcW9oeTdp" },
+      { type: "Publicação", url: "https://www.instagram.com/p/DcOyAkpicM_/?stkn=b2hkcHVnNTc5eDYw" },
+    ],
+  },
+  {
+    slug: "vitinarte",
+    client: "Vitinarte",
+    items: [
+      { type: "Reel", url: "https://www.instagram.com/reel/DZ-QMzLu4J0/?stkn=MjN2emRvdHN3OHp3" },
+      { type: "Reel", url: "https://www.instagram.com/reel/DZYagzKJNWx/?stkn=MXQzczdzajAwMGV1bA==" },
+    ],
+  },
+  {
+    slug: "mismec-4-varas",
+    client: "Mismec 4 Varas",
+    items: [
+      { type: "Reel", url: "https://www.instagram.com/reel/DdHXicaRN8w/?stkn=NnZuYTNjcWF2aGkw" },
+      { type: "Publicação", url: "https://www.instagram.com/p/DdWo1salgYC/?stkn=cXhieDNyOHcwbXpj" },
+    ],
+  },
+] as const;
 
 // Eventos & Audiovisual — fora do universo de marcas/empresas (aniversário, chá revelação, parto).
 // "Outros" foi removido: o filtro já tem "Todos" cobrindo esse caso, não precisa de duas opções

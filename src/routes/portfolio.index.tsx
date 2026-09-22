@@ -4,6 +4,7 @@ import { PortfolioAbout } from "@/components/portfolio/PortfolioAbout";
 import { PortfolioServices } from "@/components/portfolio/PortfolioServices";
 import { PortfolioBrands } from "@/components/portfolio/PortfolioBrands";
 import { PortfolioPlanning } from "@/components/portfolio/PortfolioPlanning";
+import { PortfolioVideos } from "@/components/portfolio/PortfolioVideos";
 import { PortfolioEvents } from "@/components/portfolio/PortfolioEvents";
 import { PortfolioResults } from "@/components/portfolio/PortfolioResults";
 import { PortfolioContact } from "@/components/portfolio/PortfolioContact";
@@ -49,6 +50,7 @@ function PortfolioIndexPage() {
       <PortfolioServices />
       <PortfolioBrands />
       <PortfolioPlanning />
+      <PortfolioVideos />
       <PortfolioEvents />
       <PortfolioResults />
       <PortfolioContact />

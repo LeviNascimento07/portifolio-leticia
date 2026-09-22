@@ -85,6 +85,7 @@ export function PortfolioContact() {
               { href: "#servicos", label: "Serviços" },
               { href: "#marcas", label: "Marcas atendidas" },
               { href: "#planejamentos", label: "Posts" },
+              { href: "#videos", label: "Vídeos" },
               { href: "#eventos", label: "Eventos" },
               { href: "#resultados", label: "Resultados" },
             ].map((link) => (

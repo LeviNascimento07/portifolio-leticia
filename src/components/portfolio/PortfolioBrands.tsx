@@ -16,9 +16,11 @@ export function PortfolioBrands() {
           {CONTENT_PLANS.map((plan) => (
             <div
               key={plan.slug}
-              className="grid aspect-[3/2] place-items-center rounded-brand border border-border bg-card px-4 shadow-soft"
+              className="group grid aspect-[3/2] place-items-center rounded-brand border border-border bg-card px-4 shadow-soft transition-all duration-500 hover:-translate-y-1.5 hover:border-gold/50 hover:bg-gold/[0.04] hover:shadow-lift"
             >
-              <p className="text-center text-sm font-medium text-muted-foreground">{plan.client}</p>
+              <p className="text-center text-sm font-medium text-muted-foreground transition-colors duration-500 group-hover:text-foreground">
+                {plan.client}
+              </p>
             </div>
           ))}
         </div>
