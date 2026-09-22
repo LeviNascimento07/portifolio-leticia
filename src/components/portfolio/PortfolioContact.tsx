@@ -1,4 +1,4 @@
-import { ArrowUpRight, Instagram, Mail, MapPin, MessageCircle } from "lucide-react";
+import { Instagram, Mail, MapPin, MessageCircle } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { CONTACTS, EMAIL_ADDRESS, INSTAGRAM_HANDLE } from "@/lib/content";
 import { Monogram } from "@/components/brand/Monogram";
@@ -33,24 +33,6 @@ export function PortfolioContact() {
         <p className="mx-auto mt-7 max-w-xl text-base leading-relaxed text-cream/70">
           Entre em contato e vamos criar grandes resultados juntos.
         </p>
-
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-          <a
-            href={CONTACTS.whatsapp}
-            target="_blank"
-            rel="noreferrer noopener"
-            className="press-deep shadow-gold inline-flex items-center gap-2 rounded-full bg-gradient-gold px-8 py-4 text-xs font-semibold tracking-[0.22em] text-ink uppercase"
-          >
-            Solicite um orçamento
-            <ArrowUpRight className="size-4" aria-hidden="true" />
-          </a>
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 rounded-full border border-cream/25 px-8 py-4 text-xs font-semibold tracking-[0.22em] text-cream/80 uppercase transition-colors hover:border-gold hover:text-gold"
-          >
-            Ver pacotes de social media
-          </Link>
-        </div>
 
         <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {LINKS.map((link) => (
